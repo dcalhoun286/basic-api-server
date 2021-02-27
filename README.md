@@ -2,7 +2,7 @@
 
 ## Links
 
-- [Pull request #1]()
+- [Pull request #1](https://github.com/dcalhoun286/basic-api-server/pull/1)
 - [Deployed site](https://dc-basic-api-server.herokuapp.com/)
 - [GitHub Actions](https://github.com/dcalhoun286/basic-api-server/actions)
 
