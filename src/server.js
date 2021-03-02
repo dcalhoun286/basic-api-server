@@ -45,6 +45,10 @@ function getHomePage(req, res) {
   res.status(200).json(outputObject);
 }
 
+app.get('/bad', (req, res, next) => {
+  next('oops');
+});
+
 // error handling middleware is always at the bottom of the middleware chain
 app.use('*', notFoundHandler);
 app.use(errorHandler);
