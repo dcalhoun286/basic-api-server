@@ -1,7 +1,7 @@
 'use strict';
 
 const express = require('express');
-// const Clothes = require('../models/clothesDb.js');
+// const Clothes = require('../models/clothesModel.js');
 // here, we instantiate the new clothes model
 // const clothing = new Clothes();
 
@@ -28,6 +28,7 @@ function getClothes(req, res) {
 }
 
 // function getOneClothingItem(req, res) {
+// this is coming from a URL, so you have to parse the string to get the number
 //   let id = parseInt(req.params.id);
 //   let item = clothing.get(id);
 //   res.status(200).json(item);
