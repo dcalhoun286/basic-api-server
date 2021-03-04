@@ -34,21 +34,21 @@ class DogsModel {
     return record;
   }
 
-  // UPDATE
-  // update(id, obj) {
-  //   // once we've updated, we'll return the obj we updated it with
-  //   let id = parseInt(req.params.id);
-  //   if (id) {
-  //     return obj;
-  //   }
-  // }
+  // UPDATE -> placeholder for "real" update
+  update(id, obj) {
+    // once we've updated, we'll return the obj we updated it with
+    // let id = parseInt(req.params.id);
+    if (id) {
+      return obj;
+    }
+  }
 
-  // // DELETE
-  // delete(id) {
-  //   if (id) {
-  //     return null;
-  //   }
-  // }
+  // DELETE -> placeholder for "real" delete
+  delete(id) {
+    if (id) {
+      return null;
+    }
+  }
 }
 
 module.exports = DogsModel;
