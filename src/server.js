@@ -9,8 +9,6 @@ const app = express();
 
 // internal modules
 
-// ./ -> considered relative path
-// __dirname -> point us to an absolute path
 const notFoundHandler = require('./error-handlers/404.js');
 const errorHandler = require('./error-handlers/500.js');
 const logger = require('./middleware/logger.js');
@@ -22,16 +20,16 @@ const clothesRoutes = require('./routes/clothes.js');
 // internal constants
 const PORT = process.env.PORT || 3333;
 
-// if your POST requests don't work, it's probably because you forgot to add this
 // Express Global Middleware
+// if your POST requests don't work, it's probably because you forgot to add this
 app.use(express.json());
 
 // Our own Global Middleware
 app.use(logger);
 
 // use the routes from the routing module
-app.use(clothesRoutes);
 app.use(dogsRoutes);
+app.use(clothesRoutes);
 
 app.get('/', getHomePage);
 
@@ -46,7 +44,7 @@ function getHomePage(req, res) {
 }
 
 app.get('/bad', (req, res, next) => {
-  next('oops');
+  next('error');
 });
 
 // error handling middleware is always at the bottom of the middleware chain
