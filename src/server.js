@@ -6,18 +6,21 @@
 
 const express = require('express');
 const app = express();
+require('dotenv').config();
 
 // internal modules
 
 const notFoundHandler = require('./error-handlers/404.js');
 const errorHandler = require('./error-handlers/500.js');
 const logger = require('./middleware/logger.js');
-// const ThingsModel = require('./models/thing.js');
-// const itemRoutes = require('./routes/things.js');
+
+// Router modules
+
 const dogsRoutes = require('./routes/dogs.js');
 const clothesRoutes = require('./routes/clothes.js');
 
 // internal constants
+
 const PORT = process.env.PORT || 3333;
 
 // Express Global Middleware
@@ -43,18 +46,22 @@ function getHomePage(req, res) {
   res.status(200).json(outputObject);
 }
 
+// testing status 500 error handler
 app.get('/bad', (req, res, next) => {
-  next('error');
+  throw new Error('Intentional to test 500 error handler');
 });
 
 // error handling middleware is always at the bottom of the middleware chain
 app.use('*', notFoundHandler);
 app.use(errorHandler);
 
+const start = (port) => {
+  if(!port) { throw new Error('Missing Port');}
+  app.listen(port, () => console.log(`Server up on port ${port}`));
+};
+
 module.exports = {
   server: app,
-  start: (port) => {
-    if (!port) { throw new Error('Missing Port');}
-    app.listen(port, () => console.log(`Server up on port ${port}`));
-  },
+  PORT: PORT,
+  start: start,
 };
