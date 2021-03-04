@@ -15,6 +15,8 @@ dogsRouter.post('/dogs', createDog);
 dogsRouter.put('/dogs/:id', updateDog);
 dogsRouter.delete('/dogs/:id', deleteDog);
 
+// route callbacks
+
 // if there are things in the db, this callback will be used to get the things from the db and send back to the user
 function getDogs(req, res) {
   // this is CRUD -> get all items from the database
@@ -49,7 +51,7 @@ function deleteDog(req, res) {
   let id = parseInt(req.params.id);
   let deleted = pups.delete(id);
   // status code is 204 for deleting an item; deleted obj is now = null
-  res.status(204).send(`ITEM DELETED: ${deleted}`);
+  res.status(204).json({ itemDeleted: `${deleted}` });
 }
 
 module.exports = dogsRouter;
