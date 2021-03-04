@@ -3,7 +3,9 @@
 ## Links
 
 - [Pull request #1](https://github.com/dcalhoun286/basic-api-server/pull/1)
-- [Deployed site](https://dc-basic-api-server.herokuapp.com/)
+- [Pull request #2](https://github.com/dcalhoun286/basic-api-server/pull/2)
+- [Pull request #3](https://github.com/dcalhoun286/basic-api-server/pull/3)
+- [Deployed site](http://dc-basic-api-server.herokuapp.com/)
 - [GitHub Actions](https://github.com/dcalhoun286/basic-api-server/actions)
 
 ## The Setup
@@ -38,7 +40,7 @@
 1. Test your server: `npm test`
   1. You should see 100% of tests passing
 1. Start your server: `nodemon`
-  1. Visit [http://localhost:3000/data](http://localhost:3000/data) in your browser to confirm that the server is visible
+  1. Visit [http://localhost:3000/](http://localhost:3000/) in your browser to confirm that the server is visible
 
 ## Deploy
 
@@ -64,3 +66,5 @@ Once your dev run has completed, you have successfully deployed your application
 1. When that process completes, open your app in the browser to prove it.
 
 ## Resources and Documentation
+
+- Chris Bortel (TA) helped me set up [Insomnia](https://insomnia.rest/) so I could test my HTTP requests
