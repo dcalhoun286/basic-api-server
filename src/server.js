@@ -13,6 +13,7 @@ require('dotenv').config();
 const notFoundHandler = require('./error-handlers/404.js');
 const errorHandler = require('./error-handlers/500.js');
 const logger = require('./middleware/logger.js');
+const validator = require('./middleware/validator.js');
 
 // Router modules
 
@@ -29,6 +30,7 @@ app.use(express.json());
 
 // Our own Global Middleware
 app.use(logger);
+app.use(validator);
 
 // use the routes from the routing module
 app.use(dogsRoutes);
