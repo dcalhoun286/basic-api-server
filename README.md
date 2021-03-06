@@ -68,3 +68,5 @@ Once your dev run has completed, you have successfully deployed your application
 ## Resources and Documentation
 
 - Chris Bortel (TA) helped me set up [Insomnia](https://insomnia.rest/) so I could test my HTTP requests
+- Below is a UML of my application (created at [https://app.diagrams.net](https://app.diagrams.net))
+![Diagram](assets/images/lab03-diagram.png)
