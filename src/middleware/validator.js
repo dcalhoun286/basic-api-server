@@ -1,8 +1,8 @@
 'use strict';
 
 const validator = (req, res, next) => {
-  if (req.method === 'GET') {
-    console.log('REQ METHOD is ', req.method);
+  if (req.params.id === undefined) {
+    next(`Invalid ${req.method} request`);
   }
   next();
 };

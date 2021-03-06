@@ -2,6 +2,7 @@
 
 const express = require('express');
 const Clothes = require('../models/clothesModel.js');
+const validator = require('../middleware/validator.js');
 // here, we instantiate the new clothes model
 const clothing = new Clothes();
 
@@ -10,10 +11,10 @@ const clothesRouter = express.Router();
 // routes
 
 clothesRouter.get('/clothes', getClothes);
-clothesRouter.get('/clothes/:id', getOneClothingItem);
+clothesRouter.get('/clothes/:id', validator, getOneClothingItem);
 clothesRouter.post('/clothes', createClothingItem);
-clothesRouter.put('/clothes/:id', updateClothingItem);
-clothesRouter.delete('/clothes/:id', deleteClothingItem);
+clothesRouter.put('/clothes/:id', validator, updateClothingItem);
+clothesRouter.delete('/clothes/:id', validator, deleteClothingItem);
 
 // if there are things in the db, this callback will be used to get the thing from the db and send back to the user
 function getClothes(req, res) {
@@ -37,7 +38,6 @@ function createClothingItem(req, res) {
   res.status(201).json(newItem);
 }
 
-// // localhost:3333/clothes/:id
 function updateClothingItem(req, res) {
   let id = parseInt(req.params.id);
   let content = req.body;

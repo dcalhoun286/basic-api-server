@@ -2,6 +2,8 @@
 
 const express = require('express');
 const Dogs = require('../models/dogsModel.js');
+const validator = require('../middleware/validator.js');
+
 // here, we instantiate the new dogs model
 const pups = new Dogs();
 
@@ -10,10 +12,10 @@ const dogsRouter = express.Router();
 // routes
 
 dogsRouter.get('/dogs', getDogs);
-dogsRouter.get('/dogs/:id', getOneDog);
+dogsRouter.get('/dogs/:id', validator, getOneDog);
 dogsRouter.post('/dogs', createDog);
-dogsRouter.put('/dogs/:id', updateDog);
-dogsRouter.delete('/dogs/:id', deleteDog);
+dogsRouter.put('/dogs/:id', validator, updateDog);
+dogsRouter.delete('/dogs/:id', validator, deleteDog);
 
 // route callbacks
 
