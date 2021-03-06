@@ -31,6 +31,7 @@ describe('====== SERVER ======', () => {
     await mockReq.get('/clothes')
       .then(result => {
         expect(result.status).toBe(200);
+        expect(Array.isArray(result.body)).toBeTruthy();
       });
   });
 
@@ -85,6 +86,7 @@ describe('====== SERVER ======', () => {
     await mockReq.get('/dogs')
       .then(result => {
         expect(result.status).toBe(200);
+        expect(Array.isArray(result.body)).toBeTruthy();
       });
   });
 
