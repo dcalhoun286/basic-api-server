@@ -1,9 +1,9 @@
 'use strict';
 
-// we are going to use this as "route" level middleware today
-// this is specific to any routes we call it on
-// ex: app.get('/some-endpoint', logger, (req, res) => {...})
-module.exports = (req, res, next) => {
-  console.log(`PATH: ${req.path} METHOD: ${req.method}`);
+function loggerMiddleware(req, res, next) {
+  console.log(`PATH: ${req.path}`);
+  console.log(`METHOD: ${req.method}`);
   next();
-};
+}
+
+module.exports = loggerMiddleware;

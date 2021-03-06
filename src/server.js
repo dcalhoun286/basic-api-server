@@ -6,32 +6,33 @@
 
 const express = require('express');
 const app = express();
+require('dotenv').config();
 
 // internal modules
 
-// ./ -> considered relative path
-// __dirname -> point us to an absolute path
 const notFoundHandler = require('./error-handlers/404.js');
 const errorHandler = require('./error-handlers/500.js');
 const logger = require('./middleware/logger.js');
-// const ThingsModel = require('./models/thing.js');
-// const itemRoutes = require('./routes/things.js');
+
+// Router modules
+
 const dogsRoutes = require('./routes/dogs.js');
 const clothesRoutes = require('./routes/clothes.js');
 
 // internal constants
+
 const PORT = process.env.PORT || 3333;
 
-// if your POST requests don't work, it's probably because you forgot to add this
 // Express Global Middleware
+// if your POST requests don't work, it's probably because you forgot to add this
 app.use(express.json());
 
 // Our own Global Middleware
 app.use(logger);
 
 // use the routes from the routing module
-app.use(clothesRoutes);
 app.use(dogsRoutes);
+app.use(clothesRoutes);
 
 app.get('/', getHomePage);
 
@@ -45,14 +46,22 @@ function getHomePage(req, res) {
   res.status(200).json(outputObject);
 }
 
+// testing status 500 error handler
+app.get('/bad', (req, res, next) => {
+  throw new Error('Intentional to test 500 error handler');
+});
+
 // error handling middleware is always at the bottom of the middleware chain
 app.use('*', notFoundHandler);
 app.use(errorHandler);
 
+const start = (port) => {
+  if(!port) { throw new Error('Missing Port');}
+  app.listen(port, () => console.log(`Server up on port ${port}`));
+};
+
 module.exports = {
   server: app,
-  start: (port) => {
-    if (!port) { throw new Error('Missing Port');}
-    app.listen(port, () => console.log(`Server up on port ${port}`));
-  },
+  PORT: PORT,
+  start: start,
 };
