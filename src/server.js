@@ -46,11 +46,6 @@ function getHomePage(req, res) {
   res.status(200).json(outputObject);
 }
 
-// testing status 500 error handler
-app.get('/bad', (req, res, next) => {
-  throw new Error('Intentional to test 500 error handler');
-});
-
 // error handling middleware is always at the bottom of the middleware chain
 app.use('*', notFoundHandler);
 app.use(errorHandler);
